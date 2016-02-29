@@ -1,0 +1,91 @@
+html
+	head
+		meta(charset='utf-8')
+		title 陈万芳的简历
+		link(rel='stylesheet',href='css/index.css')
+	body#body
+		.wrap
+			.wrap-inner#wrap-inner
+				section.home#home
+					.myPhoto
+						img(src='img/photo2.jpg')
+					h1 陈万芳
+					h3 web前端工程师
+					.download
+						a(href='resources/myresume.pdf') 下载我的简历
+					.scroll
+						i.icon-circle-down.icon-circle-toggle
+				section.nav.clearfix#nav
+					header
+						a(href='javascript:;')#name Rookie_wan
+						nav
+							a(href='javascript:;') 个人简介
+							a(href='javascript:;') 专业技能
+							a(href='javascript:;') 工作经历
+							a(href='javascript:;') 部分作品
+							a(href='javascript:;') 联系邮箱
+				section.about#about
+					h2 个人简介
+					.intro.clearfix
+						ul.fl
+							li
+								span 姓名 | 陈万芳
+							li
+								span 手机 | 18030042074
+							li
+								span 邮箱 | 939926954@qq.com
+							li
+								span 住址 | 厦门
+							li
+								span 学校 | 华侨大学
+							li
+								span 专业 | 软件工程
+							li
+								span 四级 | 466
+						.fr
+							p
+								| 我喜欢新奇的技术，对web开发有浓厚的兴趣，能够吃苦耐劳，与团队成员密切配合完成任务
+							br
+							p
+								| 熟悉网站建设相关技术HTML5、CSS3、PHP、Javascript(jQuery) 等web开发语言，mvc模型。
+								br
+								| 熟悉MySQL数据库
+								br
+								| 熟悉使用tp框架，Bootstrap框架。
+								br
+								| 熟悉gulp前端自动化工具，svn等工具。
+								br
+								| 熟悉使用jade，sass等语言。
+				section.skill#skill
+					h2 专业技能
+					.skill-echarts-main#skill-echarts-main
+						//-http://echarts.baidu.com/doc/example/pie5.html
+				section.workEXP#workEXP
+					h2 工作经历
+					.workEXP-echarts-main#workEXP-echarts-main
+					//-http://echarts.baidu.com/doc/example/eventRiver1.html
+				section.works#works
+					h2 部分作品
+					.wrap#wrap
+						//-div(onClick='turn(this);',id='photo_{{index}}').photo.photo_front
+						div(id='photo_{{index}}').photo.photo_front
+							.photo-wrap
+								.side.side-front
+									p.image
+										img(src="img/{{img}}")
+									p.caption
+										a(href='{{caption_url}}',target = '_blank') {{caption}}
+								.side.side-back.photo_back
+									p.desc {{desc}}
+				section.contact#contact
+					.inner
+						h1 快把我收到碗里吧
+						br
+						a(href='mailto:939926954@qq.com') 939926954@qq.com
+					.scroll
+						i.icon-circle-up.icon-circle-toggle#toTop
+		script(src='js/jquery-1.9.1.min.js')
+		script(src='js/echarts-all.js')
+		script(src='js/data.js')
+		script(src='js/index.js')
+		

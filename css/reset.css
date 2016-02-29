@@ -1,0 +1,23 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Microsoft YaHei"; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal; }
+
+i {
+  font-style: normal; }
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, i, a {
+  display: block; }
+
+ol, ul {
+  list-style: none; }
+
+a {
+  text-decoration: none; }
+
+/*# sourceMappingURL=reset.css.map */
