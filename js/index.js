@@ -212,8 +212,8 @@ $(document).ready(function() {
 			            x:'60%', // for funnel
 			            itemStyle : labelFromatter,
 			            data : [
-			                {name:'other', value:20, itemStyle : labelBottom},
-			                {name:'PHP', value:80,itemStyle : labelTop}
+			                {name:'other', value:50, itemStyle : labelBottom},
+			                {name:'PHP', value:50,itemStyle : labelTop}
 			            ]
 			        },
 			        {
