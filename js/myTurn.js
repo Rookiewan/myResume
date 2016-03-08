@@ -1,7 +1,10 @@
 /*
     turn
  */
-
+/**
+ *  author: Rookie_wan
+ *  time: 2016-3-8
+ */
 ;
 (function($) {
     var TurnObj = function(ele, opt) {
@@ -25,6 +28,9 @@
         this.options = $.extend({}, this.defaults, opt);
     };
     TurnObj.prototype = {
+        /**
+         * init
+         */
         init: function() {
             var _this = this;
             _this.isBookOpen = false;
@@ -34,8 +40,6 @@
             _this._coverFront = _this.$element.find('.cover-front');
             _this._coverBack = _this.$element.find('.cover-back');
 
-
-            //_this._coverFront.css({ 'z-index': _this._pages.length + 100 });
             _this._coverFront.css({ 'z-index': 1002});
 
             var pageZIndex = _this._pages.length + 5;
@@ -44,6 +48,7 @@
                 var _this_ = $(this);
                 _this_.css({
                     'z-index': pageZIndex,
+                    '-webkit-transform': 'translateZ(' + turnZ + 'px)',
                     'transform': 'translateZ(' + turnZ + 'px)'
                 });
                 pageZIndex--;
@@ -75,14 +80,15 @@
                 'width': w,
                 'height': h,
                 'top': t,
+                '-webkit-transform': 'rotateY(0) translateX(' + w / 2 + 'px)',
                 'transform': 'rotateY(0) translateX(' + w / 2 + 'px)',
                 'transition': 'all ' + _this.options.transitionTime + 'ms'
             });
 
-            _this._pages.css({ 'transform': 'rotateY(0) translateZ(0)' });
+            _this._pages.css({ '-webkit-transform': 'rotateY(0) translateZ(0)','transform': 'rotateY(0) translateZ(0)' });
 
             setTimeout(function() {
-                _this._coverFront.css({ 'transform': 'rotateY(180deg) translateZ(0)', 'z-index': 100 });
+                _this._coverFront.css({ '-webkit-transform': 'rotateY(180deg) translateZ(0)', 'transform': 'rotateY(180deg) translateZ(0)', 'z-index': 100 });
                 _this._pages.each(function() {
                     var _this_ = $(this);
                     if(_this_.index() != 1) {
@@ -113,12 +119,14 @@
                 if(_this_.index() == 1) {
                     _this_.css({
                         'z-index': 50,
+                        '-webkit-transform': 'rotateY(0)',
                         'transform': 'rotateY(0)',
                         'display': 'block'
                     });
                 } else {
                     _this_.css({
                         'z-index': pageZIndex,
+                        '-webkit-transform': 'rotateY(0)',
                         'transform': 'rotateY(0)',
                         'display': 'block'
                     });
@@ -129,6 +137,7 @@
 
             setTimeout(function() {
                 _this._coverFront.css({
+                    "-webkit-transform": "rotateY(360deg)",
                     "transform": "rotateY(360deg)"
                 });
 
@@ -139,10 +148,12 @@
                         "width": "65%",
                         "height": "67%",
                         "top": "17%",
+                        "-webkit-transform": "rotateY(-25deg) translateX(35%)",
                         "transform": "rotateY(-25deg) translateX(35%)"
                     });
 
                     _this._coverFront.css({
+                        "-webkit-transform": "translateZ(80px)",
                         "transform": "translateZ(80px)"
                     });
                     _this._isBookOpen = false;
@@ -156,6 +167,7 @@
                     _this._pages.each(function() {
                         var _this_ = $(this);
                         _this_.css({
+                            '-webkit-transform': 'rotateY(0) translateZ(' + turnZ + 'px)',
                             'transform': 'rotateY(0) translateZ(' + turnZ + 'px)'
                         });
                         pageZIndex--;
@@ -191,8 +203,9 @@
                     setTimeout(function() {
                         nextPage.css({'z-index': 1000});
                         currPage.css({
-                           'transform': 'rotateY(-180deg) translateZ(0px)',
-                           'z=index': 1000
+                            '-webkit-transform': 'rotateY(-180deg) translateZ(0px)',
+                            'transform': 'rotateY(-180deg) translateZ(0px)',
+                            'z-index': 1000
                         });
 
                        setTimeout(function() {
@@ -221,6 +234,7 @@
                     prePage.show();
                     setTimeout(function() {
                         currPage.css({
+                            '-webkit-transform': 'rotateY(0) translateZ(0px)',
                             'transform': 'rotateY(0) translateZ(0px)'
                         });
                         setTimeout(function() {
@@ -262,7 +276,6 @@
                 _this._turnPageClass = _this._nextPageAniClass;
                 _this._dir = 'next';
                 _this.turnPage().then(function() {
-                    //$(_this._pages[_this._currPageIndex - 1]).addClass('curr-page-prev').removeClass(_this._turnPageClass);
                     _this._isPageturnFinished = true;
                     $(_this._pages[_this._currPageIndex]).siblings('.page').attr('class', 'page');
                     dtd.resolve(_this._pages, _this._currPageIndex);
@@ -295,7 +308,6 @@
                 _this._turnPageClass = _this._prevPageAniClass;
                 _this._dir = 'prev';
                 _this.turnPage().then(function() {
-                    //$(_this._pages[_this._currPageIndex + 1]).addClass('curr-page-next').removeClass(_this._turnPageClass);
                     _this._isPageturnFinished = true;
                     $(_this._pages[_this._currPageIndex]).siblings('.page').attr('class', 'page');
                     dtd.resolve(_this._pages, _this._currPageIndex);
@@ -304,6 +316,10 @@
 
             return dtd.promise();
         },
+        /**
+         * turn to which page
+         * @param  {[int]} toPageIndex [page Index]
+         */
         turnToPage: function(toPageIndex) {
 
             var _this = this;

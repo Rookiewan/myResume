@@ -65,6 +65,7 @@
                     } else if(pageIndex == 3) {
                         prevPage.addClass('my-works-ani');
                         _right.removeClass('disabled');
+                        $('#back-home').hide();
                     }
                     prevPage.addClass('curr-page-prev');
                 });
@@ -176,9 +177,14 @@
         //help info
         ;
         (function() {
-            console.log('---------------------------------------');
-            console.log('请尽量用最新版的chrome浏览器打开');
-            console.log('---------------------------------------');
+            var isChrome = window.navigator.userAgent.indexOf("Chrome") !== -1;
+            if(!isChrome) {
+                $('.help-info').show();
+                console.log('---------------------------------------');
+                console.log('请使用最新版的chrome内核浏览器打开');
+                console.log('---------------------------------------');
+            }
         })();
+
     });
 })(window, jQuery);
