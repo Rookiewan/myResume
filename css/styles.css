@@ -1274,9 +1274,9 @@ a {
     border-radius: 50%;
     left: -100px;
     top: -60px;
-    opacity: 0;
+    /*opacity: 0;
     -webkit-animation: take-me 3s linear 1s infinite;
-            animation: take-me 3s linear 1s infinite;
+            animation: take-me 3s linear 1s infinite;*/
 
 }
 .take-me .inner .text-wrap:before,
